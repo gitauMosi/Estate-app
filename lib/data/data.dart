@@ -1,0 +1,272 @@
+import 'package:estate_app/models/estate.dart';
+import 'package:estate_app/models/message.dart';
+
+import '../models/message_text.dart';
+import '../models/user.dart';
+
+List<Estate> estates = [
+  Estate(
+    name: 'Oceanview Villa',
+    location: 'Malibu',
+    price: 2500000,
+    image: 'assets/images/e1.jpeg',
+    beds: 4,
+    floors: 2,
+    baths: 3,
+    sqft: 3500,
+  ),
+  Estate(
+    name: 'Mountain Retreat',
+    location: 'Aspen',
+    price: 1200000,
+    image: 'assets/images/e2.jpeg',
+    beds: 3,
+    floors: 1,
+    baths: 2,
+    sqft: 2000,
+  ),
+  Estate(
+    name: 'Downtown Loft',
+    location: 'New York',
+    price: 800000,
+    image: 'assets/images/e3.jpeg',
+    beds: 2,
+    floors: 1,
+    baths: 1,
+    sqft: 1200,
+  ),
+  Estate(
+    name: 'Country House',
+    location: 'Napa Valley',
+    price: 1500000,
+    image: 'assets/images/e4.jpeg',
+    beds: 5,
+    floors: 2,
+    baths: 4,
+    sqft: 4000,
+  ),
+  Estate(
+    name: 'Suburban Bungalow',
+    location: 'Chicago',
+    price: 600000,
+    image: 'assets/images/e5.jpeg',
+    beds: 3,
+    floors: 1,
+    baths: 2,
+    sqft: 1800,
+  ),
+  Estate(
+    name: 'Luxury Condo',
+    location: 'Miami',
+    price: 950000,
+    image: 'assets/images/e6.jpeg',
+    beds: 2,
+    floors: 1,
+    baths: 2,
+    sqft: 1500,
+  ),
+  Estate(
+    name: 'Historic Mansion',
+    location: 'New Orleans',
+    price: 3500000,
+    image: 'assets/images/e1.jpeg',
+    beds: 6,
+    floors: 3,
+    baths: 5,
+    sqft: 6000,
+  ),
+  Estate(
+    name: 'Beachfront Cottage',
+    location: 'Cape Cod',
+    price: 1100000,
+    image: 'assets/images/e7.jpeg',
+    beds: 4,
+    floors: 1,
+    baths: 2,
+    sqft: 2200,
+  ),
+  Estate(
+    name: 'Modern Farmhouse',
+    location: 'Austin',
+    price: 900000,
+    image: 'assets/images/e8.jpeg',
+    beds: 4,
+    floors: 2,
+    baths: 3,
+    sqft: 3000,
+  ),
+  Estate(
+    name: 'Urban Studio',
+    location: 'San Francisco',
+    price: 700000,
+    image: 'assets/images/e3.jpeg',
+    beds: 1,
+    floors: 1,
+    baths: 1,
+    sqft: 800,
+  ),
+  Estate(
+    name: 'Eco-Friendly Home',
+    location: 'Portland',
+    price: 500000,
+    image: 'assets/images/e4.jpeg',
+    beds: 3,
+    floors: 1,
+    baths: 2,
+    sqft: 1600,
+  ),
+];
+
+List<User> users = [
+  User(
+    id: "1",
+    name: 'Alice Johnson',
+    email: 'alice@example.com',
+    avatar: 'assets/images/u1.jpeg',
+    isOnline: true,
+  ),
+  User(
+    id: "2",
+    name: 'Bob Smith',
+    email: 'bob@example.com',
+    avatar: 'assets/images/u2.jpeg',
+    isOnline: false,
+  ),
+  User(
+    id: "3",
+    name: 'Charlie Brown',
+    email: 'charlie@example.com',
+    avatar: 'assets/images/u3.jpeg',
+    isOnline: true,
+  ),
+  User(
+    id: "4",
+    name: 'Diana Prince',
+    email: 'diana@example.com',
+    avatar: 'assets/images/u4.jpeg',
+    isOnline: false,
+  ),
+  User(
+    id: "5",
+    name: 'Ethan Hunt',
+    email: 'ethan@example.com',
+    avatar: 'assets/images/u5.jpeg',
+    isOnline: true,
+  ),
+  User(
+    id: "6",
+    name: 'Fiona Green',
+    email: 'fiona@example.com',
+    avatar: 'assets/images/u6.jpeg',
+    isOnline: false,
+  ),
+  User(
+    id: "7",
+    name: 'George Martin',
+    email: 'george@example.com',
+    avatar: 'assets/images/u7.jpeg',
+    isOnline: true,
+  ),
+  User(
+    id: "8",
+    name: 'Hannah Brown',
+    email: 'hannah@example.com',
+    avatar: 'assets/images/u1.jpeg',
+    isOnline: true,
+  ),
+  User(
+    id: "9",
+    name: 'Ian Wright',
+    email: 'ian@example.com',
+    avatar: 'assets/images/u2.jpeg',
+    isOnline: false,
+  ),
+  User(
+    id: "10",
+    name: 'Julia Roberts',
+    email: 'julia@example.com',
+    avatar: 'assets/images/u1.jpeg',
+    isOnline: true,
+  ),
+];
+
+List<Message> messages = [
+  Message(
+    id: '1',
+    senderId: 'user1',
+    receiverId: 'user2',
+    user: users[6],
+    content: 'Hello!',
+    timestamp: DateTime.now().subtract(const Duration(minutes: 5)),
+    isRead: true,
+  ),
+  Message(
+    id: '2',
+    senderId: 'user2',
+    receiverId: 'user1',
+    user: users[1],
+    content: 'Hi! How are you?',
+    timestamp: DateTime.now().subtract(const Duration(minutes: 4)),
+    isRead: false,
+  ),
+  Message(
+    id: '3',
+    senderId: 'user1',
+    receiverId: 'user2',
+    user: users[2],
+    content: 'I am good, thanks!',
+    timestamp: DateTime.now().subtract(const Duration(minutes: 3)),
+    isRead: true,
+  ),
+  Message(
+    id: '4',
+    senderId: 'user2',
+    receiverId: 'user1',
+    user: users[3],
+    content: 'What are you up to?',
+    timestamp: DateTime.now().subtract(const Duration(minutes: 2)),
+    isRead: false,
+  ),
+  Message(
+    id: '5',
+    senderId: 'user1',
+    receiverId: 'user2',
+    user: users[4],
+    content: 'Just working on some projects.',
+    timestamp: DateTime.now().subtract(const Duration(minutes: 1)),
+    isRead: false,
+  ),
+];
+
+List<MessageText> messagesText = [
+    MessageText(
+      id: '1',
+      content: 'Hello!',
+      timestamp: DateTime.now().subtract(Duration(minutes: 5)),
+      isMe: false
+    ),
+    MessageText(
+      id: '2',
+      content: 'How are you?',
+      timestamp: DateTime.now().subtract(Duration(minutes: 4)),
+      isMe: true
+    ),
+    MessageText(
+      id: '3',
+      content: 'I am good, thanks!',
+      timestamp: DateTime.now().subtract(Duration(minutes: 3)),
+      isMe: false
+    ),
+    MessageText(
+      id: '4',
+      content: 'What are you up to?',
+      timestamp: DateTime.now().subtract(Duration(minutes: 2)),
+      isMe: true
+    ),
+    MessageText(
+      id: '5',
+      content: 'Just working on some projects.',
+      timestamp: DateTime.now().subtract(Duration(minutes: 1)),
+      isMe: false
+    ),
+  ];
