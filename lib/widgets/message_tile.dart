@@ -40,19 +40,26 @@ class MessageTile extends StatelessWidget {
                 builder: (context) => MessageView(message: message)));
       },
       child: Container(
-        height: 100,
+        height: 60,
         width: MediaQuery.of(context).size.width,
         padding: const EdgeInsets.all(5),
-        margin: const EdgeInsets.symmetric(vertical: 5),
+        margin: const EdgeInsets.symmetric(vertical: 4),
         decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(16),
-            color: Colors.grey.withOpacity(0.3)),
+            color: Theme.of(context).cardColor,
+            boxShadow: const [
+              BoxShadow(
+                  color: Colors.black26,
+                  //spreadRadius: 2,
+                  blurRadius: 10,
+                  offset: Offset(0, 4)),
+            ]),
         child: Row(
           children: [
             //avatar,
             Stack(children: [
               CircleAvatar(
-                radius: 35,
+                radius: 25,
                 backgroundImage: AssetImage(message.user.avatar),
               ),
               Positioned(

@@ -15,8 +15,16 @@ class ProfilePage extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                const SizedBox(
-                  height: 15,
+                const Align(
+                  alignment: Alignment.center,
+                  child: Padding(
+                    padding: EdgeInsets.only(bottom: 8.0),
+                    child: Text(
+                      "Profile",
+                      style:
+                          TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
+                    ),
+                  ),
                 ),
                 Align(
                   alignment: Alignment.center,
@@ -32,7 +40,7 @@ class ProfilePage extends StatelessWidget {
                   ),
                 ),
                 const SizedBox(
-                  height: 15,
+                  height: 10,
                 ),
                 Align(
                     alignment: Alignment.center,
@@ -66,162 +74,45 @@ class ProfilePage extends StatelessWidget {
                 ),
                 const Text(
                   "General",
-                  style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      color: AppColor.primaryColor),
+                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
                 ),
                 const SizedBox(
                   height: 10,
                 ),
-                ListTile(
-                  contentPadding:
-                      const EdgeInsets.symmetric(horizontal: 0, vertical: 5),
-                  leading: Container(
-                    //height: 50,
-                    width: 40,
-                    padding: const EdgeInsets.all(3),
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(8),
-                        color: AppColor.primaryColorLight),
-                    child: const Icon(
-                      Icons.credit_card,
-                      color: AppColor.primaryColor,
-                    ),
-                  ),
-                  title: const Text(
-                    "Subscription & payment",
-                    style: TextStyle(color: AppColor.primaryColor),
-                  ),
-                  trailing: const Icon(
-                    Icons.arrow_forward_ios,
-                    size: 16,
-                    color: AppColor.primaryColor,
-                  ),
-                  onTap: () {},
-                ),
-                const Divider(),
-                const SizedBox(
-                  height: 10,
-                ),
-                ListTile(
-                  contentPadding:
-                      const EdgeInsets.symmetric(horizontal: 0, vertical: 5),
-                  leading: Container(
-                    //height: 50,
-                    width: 40,
-                    padding: const EdgeInsets.all(3),
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(8),
-                        color: AppColor.primaryColorLight),
-                    child: const Icon(
-                      Icons.person_2_outlined,
-                      color: AppColor.primaryColor,
-                    ),
-                  ),
-                  title: const Text(
-                    "Profile Settings",
-                    style: TextStyle(color: AppColor.primaryColor),
-                  ),
-                  trailing: const Icon(
-                    Icons.arrow_forward_ios,
-                    size: 16,
-                    color: AppColor.primaryColor,
-                  ),
-                  onTap: () {},
-                ),
-                const Divider(),
-                const SizedBox(
-                  height: 10,
-                ),
-                ListTile(
-                  contentPadding:
-                      const EdgeInsets.symmetric(horizontal: 0, vertical: 5),
-                  leading: Container(
-                    //height: 50,
-                    width: 40,
-                    padding: const EdgeInsets.all(3),
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(8),
-                        color: AppColor.primaryColorLight),
-                    child: const Icon(
-                      Icons.lock,
-                      color: AppColor.primaryColor,
-                    ),
-                  ),
-                  title: const Text(
-                    "Password",
-                    style: TextStyle(color: AppColor.primaryColor),
-                  ),
-                  trailing: const Icon(
-                    Icons.arrow_forward_ios,
-                    size: 16,
-                    color: AppColor.primaryColor,
-                  ),
-                  onTap: () {},
-                ),
-                const Divider(),
-                const SizedBox(
-                  height: 10,
-                ),
-                ListTile(
-                  contentPadding:
-                      const EdgeInsets.symmetric(horizontal: 0, vertical: 5),
-                  leading: Container(
-                    //height: 50,
-                    width: 40,
-                    padding: const EdgeInsets.all(3),
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(8),
-                        color: AppColor.primaryColorLight),
-                    child: const Icon(
-                      Icons.notifications_outlined,
-                      color: AppColor.primaryColor,
-                    ),
-                  ),
-                  title: const Text(
-                    "Notification",
-                    style: TextStyle(color: AppColor.primaryColor),
-                  ),
-                  trailing: const Icon(
-                    Icons.arrow_forward_ios,
-                    size: 16,
-                    color: AppColor.primaryColor,
-                  ),
-                  onTap: () {},
-                ),
-                const Divider(),
-                ListTile(
-                  contentPadding:
-                      const EdgeInsets.symmetric(horizontal: 0, vertical: 5),
-                  leading: Container(
-                    //height: 50,
-                    width: 40,
-                    padding: const EdgeInsets.all(3),
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(8),
-                        color: AppColor.primaryColorLight),
-                    child: const Icon(
-                      Icons.logout,
-                      color: AppColor.primaryColor,
-                    ),
-                  ),
-                  title: const Text(
-                    "Logout",
-                    style: TextStyle(color: AppColor.primaryColor),
-                  ),
-                  trailing: const Icon(
-                    Icons.arrow_forward_ios,
-                    size: 16,
-                    color: AppColor.primaryColor,
-                  ),
-                  onTap: () {},
-                ),
-                const Divider()
+                customListTile(context, "Subscription & payment",
+                    Icons.credit_card, () {}),
+                customListTile(context, "Profile Settings",
+                    Icons.person_2_outlined, () {}),
+                customListTile(context, "Password", Icons.lock, () {}),
+                customListTile(context, "Notification",
+                    Icons.notifications_outlined, () {}),
+                customListTile(context, "Logout", Icons.logout, () {}),
               ],
             ),
           ),
         ),
       ),
+    );
+  }
+
+  ListTile customListTile(
+      BuildContext context, String name, IconData icon, Function() function) {
+    return ListTile(
+      contentPadding: const EdgeInsets.all(0),
+      leading: Icon(
+        icon,
+        color: AppColor.primaryColor,
+      ),
+      title: Text(
+        name,
+        style: const TextStyle(color: AppColor.primaryColor),
+      ),
+      trailing: const Icon(
+        Icons.arrow_forward_ios,
+        size: 16,
+        color: AppColor.primaryColor,
+      ),
+      onTap: function,
     );
   }
 }

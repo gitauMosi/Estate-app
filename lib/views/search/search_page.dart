@@ -1,4 +1,6 @@
-import 'package:estate_app/constants/color.dart';
+import 'package:estate_app/data/data.dart';
+import 'package:estate_app/models/estate.dart';
+import 'package:estate_app/widgets/explore_card_widget.dart';
 import 'package:flutter/material.dart';
 
 class SearchPage extends StatelessWidget {
@@ -7,82 +9,59 @@ class SearchPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Container(
-        decoration: const BoxDecoration(
-            image: DecorationImage(
-                image: AssetImage("assets/images/map.jpg"), fit: BoxFit.cover)),
-        child: Column(
-          children: [
-            Padding(
-              padding: const EdgeInsets.all(15.0),
-              child: TextField(
-                decoration: InputDecoration(
-                    fillColor: Colors.white,
-                    filled: true,
-                    hintText: "Search Location",
-                    prefixIcon: const Icon(
-                      Icons.location_on_outlined,
-                      color: AppColor.primaryColor,
-                    ),
-                    border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(15),
-                        borderSide: BorderSide.none)),
+      extendBody: true,
+      body: CustomScrollView(
+        slivers: [
+          SliverAppBar(
+            leading: const Padding(
+              padding: EdgeInsets.all(8.0),
+              child: Text(
+                "Explore",
+                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 28),
               ),
             ),
-            const Spacer(),
-            Container(
-              height: 100,
-              width: MediaQuery.of(context).size.width,
-              margin: const EdgeInsets.all(10),
-              decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(16), color: Colors.white),
+            leadingWidth: 200,
+            floating: true,
+            expandedHeight: 100,
+            bottom: PreferredSize(
+              preferredSize: const Size.fromHeight(
+                  60), // Adjusted size to avoid layout conflicts
               child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Container(
-                    width: 100,
-                    height: 100,
-                    decoration: const BoxDecoration(
-                        borderRadius: BorderRadius.only(
-                            topRight: Radius.circular(16),
-                            bottomRight: Radius.circular(16)),
-                        image: DecorationImage(
-                            image: AssetImage("assets/images/e1.jpeg"),
-                            fit: BoxFit.cover)),
-                  ),
                   const SizedBox(
-                    width: 15,
+                    width: 10,
                   ),
-                  const Padding(
-                    padding: EdgeInsets.all(8.0),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          "Mountain Retreat",
-                          style: TextStyle(fontWeight: FontWeight.bold),
-                        ),
-                        Row(
-                          children: [
-                            Icon(Icons.location_on,
-                                size: 15, color: AppColor.primaryColor),
-                            Text(
-                              "San Jose, CA ",
-                              style: TextStyle(fontWeight: FontWeight.w500),
-                            ),
-                            Icon(
-                              Icons.arrow_drop_down_outlined,
-                              color: AppColor.primaryColor,
-                            ),
-                          ],
-                        )
-                      ],
-                    ),
-                  )
+                  const Expanded(
+                    child: SearchBar(
+                      hintText: "Search Chat....",
+                    ), // Ensure SearchBar is a properly defined widget
+                  ),
+                  IconButton(
+                    onPressed: () {},
+                    style: IconButton.styleFrom(
+                        backgroundColor: Theme.of(context).cardColor,
+                        shadowColor: Colors.grey,
+                        shape: CircleBorder(
+                            side: BorderSide(color: Colors.grey[300]!))),
+                    icon: const Icon(Icons.search),
+                  ),
                 ],
               ),
-            )
-          ],
-        ),
+            ),
+          ),
+          SliverGrid.builder(
+              itemCount: estates.length,
+              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount: 2,
+                  childAspectRatio: 0.85,
+                  mainAxisSpacing: 8,
+                  crossAxisSpacing: 8),
+              itemBuilder: (context, index) {
+                Estate estate = estates[index];
+                return ExploreCardWidget(estate: estate);
+              })
+        ],
       ),
     );
   }

@@ -1,17 +1,14 @@
 # estate_app
 
-#Home page
-![Home page](<Screenshot from 2024-10-27 23-08-45.png>)
+# Home page
+![alt text](<Screenshot from 2024-12-13 20-22-51.png>)
 
-#Search screen
-![search page](<Screenshot from 2024-10-27 23-08-58.png>)
+# Search screen
+![alt text](<Screenshot from 2024-12-13 20-22-58.png>)
 
-#message screen
-![message screen](<Screenshot from 2024-10-27 23-09-11.png>)
+# message screen
+![alt text](<Screenshot from 2024-12-13 20-23-07.png>)
 
-#chat screen
-![chat screen](<Screenshot from 2024-10-27 23-09-21.png>)
-
-#profile screen
-![profile screen](<Screenshot from 2024-10-27 23-09-36.png>)
+# profile screen
+![alt text](<Screenshot from 2024-12-13 20-23-14.png>)
 # Estate-app

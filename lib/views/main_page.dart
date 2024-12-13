@@ -17,7 +17,7 @@ class _MainPageState extends State<MainPage> {
   int selectedItemIndex = 0;
 
   final List<Widget> pages = [
-     HomePage(),
+    HomePage(),
     const SearchPage(),
     const MessagePage(),
     const ProfilePage()
@@ -35,9 +35,9 @@ class _MainPageState extends State<MainPage> {
       body: pages[selectedItemIndex],
       bottomNavigationBar: BottomNavigationBar(
           currentIndex: selectedItemIndex,
-          backgroundColor: AppColor.primaryColorLight,
           selectedItemColor: AppColor.primaryColor,
           unselectedItemColor: Colors.grey,
+          type: BottomNavigationBarType.fixed,
           onTap: onItemSelected,
           items: [
             BtmNvItem("Home", Icons.home),

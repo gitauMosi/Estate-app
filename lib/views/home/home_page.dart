@@ -1,8 +1,9 @@
-import 'package:estate_app/constants/color.dart';
-import 'package:estate_app/data/data.dart';
-import 'package:estate_app/widgets/category_widget.dart';
-import 'package:estate_app/widgets/post_widget.dart';
 import 'package:flutter/material.dart';
+
+import '../../data/data.dart';
+import '../../widgets/category_widget.dart';
+import '../../widgets/custom_app_bar.dart';
+import '../../widgets/post_widget.dart';
 
 class HomePage extends StatelessWidget {
   HomePage({super.key});
@@ -18,92 +19,48 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var mheight = MediaQuery.of(context).size.height;
     return Scaffold(
-      body: SafeArea(
-        child: SingleChildScrollView(
-          child: Column(
-            children: [
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Row(
-                  children: [
-                    const Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          "Location",
-                          style: TextStyle(fontSize: 12),
-                        ),
-                        Row(
-                          children: [
-                            Icon(Icons.location_on,
-                                size: 15, color: AppColor.primaryColor),
-                            Text(
-                              "San Jose, CA ",
-                              style: TextStyle(fontWeight: FontWeight.w500),
-                            ),
-                            Icon(
-                              Icons.arrow_drop_down_outlined,
-                              color: AppColor.primaryColor,
-                            ),
-                          ],
-                        )
-                      ],
-                    ),
-                    const Spacer(),
-
-                    //
-                    Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Container(
-                        height: 40,
-                        width: 40,
-                        decoration: BoxDecoration(
-                            color: Colors.redAccent.withOpacity(0.5),
-                            borderRadius: BorderRadius.circular(10)),
-                        child: const Center(
-                            child: Icon(
-                          Icons.more_horiz,
-                          color: Colors.red,
-                        )),
-                      ),
-                    )
-                  ],
-                ),
+      appBar: customAppBar(context),
+      drawer: const Drawer(),
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            SizedBox(
+              height: mheight * 0.02,
+            ),
+            SingleChildScrollView(
+              scrollDirection: Axis.horizontal,
+              child: Row(
+                children: categories,
               ),
-              const SizedBox(
-                height: 15,
-              ),
-              SingleChildScrollView(
-                scrollDirection: Axis.horizontal,
-                child: Row(
-                  children: categories,
-                ),
-              ),
-              const Padding(
-                padding: EdgeInsets.all(8.0),
-                child: Row(
-                  children: [
-                    Text(
-                      "Recommended",
-                      style:
-                          TextStyle(fontSize: 17, fontWeight: FontWeight.bold),
-                    ),
-                    Spacer(),
-                    Text("More")
-                  ],
-                ),
-              ),
-              ListView.builder(
-                  itemCount: estates.length,
-                  shrinkWrap: true,
-                  physics: const NeverScrollableScrollPhysics(),
-                  itemBuilder: (context, index) {
-                    return PostWidget(estate: estates[index]);
-                  })
-            ],
-          ),
+            ),
+            customRow("Recommended", () {}),
+            ListView.builder(
+                itemCount: estates.length,
+                shrinkWrap: true,
+                physics: const NeverScrollableScrollPhysics(),
+                itemBuilder: (context, index) {
+                  return PostWidget(estate: estates[index]);
+                })
+          ],
         ),
+      ),
+    );
+  }
+
+  Padding customRow(String name, Function() function) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 7),
+      child: Row(
+        children: [
+          Text(
+            name,
+            style: const TextStyle(fontSize: 17, fontWeight: FontWeight.bold),
+          ),
+          const Spacer(),
+          TextButton(onPressed: function, child: const Text("more"))
+        ],
       ),
     );
   }
